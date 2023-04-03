@@ -1,3 +1,3 @@
-const { ymlParse } = require("../lib/repo.js")
+const { testFunction } = require("../lib/repo.js")
 
-console.log(ymlParse("../src/Scarlet.yml"))
+console.log(testFunction("../src/Scarlet.yml"))
