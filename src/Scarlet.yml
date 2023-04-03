@@ -1,0 +1,20 @@
+InfoArray: "META"
+Info:
+  - repoName
+  - repoIcon
+AppCatagory: "&any"
+AppInfo:
+  - name
+  - version
+  - down
+  - category
+  - description
+  - bundleID
+  - appstore
+  - contact:
+      - web
+      - twitter
+  - debs:
+      - "&url"
+  - changelog
+  - dev
