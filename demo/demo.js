@@ -1,1 +1,3 @@
-import "../lib/repo.js"
+const { ymlParse } = require("../lib/repo.js")
+
+console.log(ymlParse("../src/Scarlet.yml"))

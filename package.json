@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "A package to handle repos in JavaScript",
   "main": "./demo/demo.js",
-  "type":"module",
   "directories": {
     "lib": "lib"
   },
