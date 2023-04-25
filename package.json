@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/kevinalavik/repojs#readme",
   "dependencies": {
-    "yaml": "^2.2.1"
+    "yaml": "^2.2.2"
   }
 }
