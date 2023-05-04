@@ -16,7 +16,7 @@ Example repos:
 
 To use repojs you have to either install it with npm: `not impelemented` or use our cdn link for using it on the web: 
 ```html
-<script src="https://puffer.is-a.dev/projects/repojs/cdn/lastest@0.1/stable.js"></script>
+<script src="https://puffer.is-a.dev/projects/repojs/cdn/lastest@0.1/stable.js" crossorigin="anonymous"></script>
 ```
 
 ### Repo types
