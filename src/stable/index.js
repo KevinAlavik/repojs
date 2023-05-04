@@ -6,5 +6,4 @@
 
 */
 
-console.log("[ERROR] Repojs is currently not available");
-alert("[REPOJS MESSAGE]\nRepojs is currently not available")
+console.log("[Repojs ERROR] Currently not available, its currently under developement");
