@@ -1,6 +1,6 @@
 /*
     RepoJs:
-        Main File
+        Main - Stable
     Contributors:
         - Kevin Alavik
 
