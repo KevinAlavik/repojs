@@ -59,6 +59,9 @@ const repojs = {
       append: function (data, element) {
         const formattedData = JSON.stringify(data, null, 2);
         element.innerHTML = '<pre>' + formattedData + '</pre>';
+      },
+      appendImage: function(element, imageUrl) {
+        element.src = imageUrl;
       }
     }
   }
