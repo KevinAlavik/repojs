@@ -24,7 +24,7 @@ const repojs = {
     parse: function (jsonData, pathString) {
       let finalData;
       if (!pathString) {
-        finalData = JSON.stringify(jsonData);
+        finalData = jsonData;
         console.log(finalData);
         return finalData;
       }
@@ -47,9 +47,9 @@ const repojs = {
         const arrayPath = path[path.length - 1].split("[");
         const arrayName = arrayPath[0];
         const arrayValues = currentData.map((item) => item[arrayName]);
-        finalData = JSON.stringify(arrayValues);
+        finalData = arrayValues;
       } else {
-        finalData = JSON.stringify(currentData);
+        finalData = currentData;
       }
 
       console.log(finalData);
@@ -57,7 +57,7 @@ const repojs = {
     },
     document: {
       append: function (data, element) {
-        const formattedData = JSON.stringify(JSON.parse(data), null, 2);
+        const formattedData = JSON.stringify(data, null, 2);
         element.innerHTML = '<pre>' + formattedData + '</pre>';
       }
     }

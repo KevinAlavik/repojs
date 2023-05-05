@@ -15,7 +15,7 @@
         repojs.init();
         repojs.repo.fetch("https://puffer.is-a.dev/repos/main-scarlet.json")
             .then(data => {
-                data = repojs.repo.parse(data, "META");
+                data = repojs.repo.parse(data);
                 repojs.repo.document.append(data, document.body);
             });
 
