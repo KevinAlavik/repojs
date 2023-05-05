@@ -6,5 +6,8 @@
 
 */
 
-console.log("[Repojs ERROR] Currently not available, its currently under developement");
-window.alert("[Repojs Message]\nHello, World!")
+const repojs = {
+  init: function() {
+    window.alert("Successfully started the repojs process");
+  }
+};
