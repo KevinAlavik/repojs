@@ -17,7 +17,7 @@ const repojs = {
         const data = await response.json();
         return data;
       } catch (error) {
-        console.error('Error fetching URL:', error);
+        console.error("Error fetching URL:", error);
         return null;
       }
     },
@@ -53,15 +53,29 @@ const repojs = {
       }
 
       console.log(finalData);
-      return finalData;
+      return JSON.stringify(finalData, null, 2);
     },
     document: {
       append: function (data, element) {
         element.innerHTML = data;
       },
-      appendImage: function(element, imageUrl) {
+      appendImage: function (element, imageUrl) {
         element.src = imageUrl;
-      }
-    }
-  }
+      },
+    },
+    convert: function (
+      selectedRepoUrl,
+      selectedRepoUrlTemplateFile,
+      finalRepoTemplateFile
+    ) {
+      return this.fetch("src/stable/templates/" + selectedRepoUrlTemplateFile)
+        .then((selectedRepoUrlTemplateFile) => {
+          return selectedRepoUrlTemplateFile;
+        })
+        .catch((error) => {
+          console.error(error);
+          return null;
+        });
+    },
+  },
 };

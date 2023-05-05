@@ -1,0 +1,17 @@
+{
+    "META": {
+        "repoName": "%{repo_name}",
+        "repoIcon": "%{repo_icon}"
+    },
+    "%{category}": [
+        {
+            "name": "%{app_name}",
+            "version": "%{app_version}",
+            "icon": "%{app_icon}",
+            "down": "%{app_download_url}",
+            "category": "%{app_category}",
+            "description": "%{app_description}",
+            "bundleID": "%{app_bundle_id}"
+        }
+    ]
+}

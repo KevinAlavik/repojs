@@ -1,0 +1,11 @@
+[
+    "%{repo_name",
+    "%{repo_icon}",
+    "%{app_name}",
+    "%{app_version}",
+    "%{app_icon}",
+    "%{app_download_url}",
+    "%{app_category}",
+    "%{app_description}",
+    "%{app_bundleID}"
+]
