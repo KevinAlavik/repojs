@@ -79,3 +79,5 @@ const repojs = {
     },
   },
 };
+
+module.exports = repojs

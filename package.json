@@ -1,0 +1,19 @@
+{
+  "name": "repo-js",
+  "version": "0.0.1",
+  "description": "A fancy way of handeling JSON data in JavaScript made for web based iOS 3rd party app stores",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinAlavik/repojs.git"
+  },
+  "author": "Kevin Alavik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinAlavik/repojs/issues"
+  },
+  "homepage": "https://puffer.is-a.dev/projects/repojs"
+}
