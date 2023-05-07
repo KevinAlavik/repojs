@@ -6,12 +6,14 @@
 
 */
 
+import fetch from 'node-fetch';
+
 const repojs = {
   init: function () {
     console.log("Successfully started the repojs process");
   },
   repo: {
-    fetch: async function (url) {
+    get: async function (url) {
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -68,7 +70,7 @@ const repojs = {
       selectedRepoUrlTemplateFile,
       finalRepoTemplateFile
     ) {
-      return this.fetch("src/stable/templates/" + selectedRepoUrlTemplateFile)
+      return fetch("src/stable/templates/" + selectedRepoUrlTemplateFile)
         .then((selectedRepoUrlTemplateFile) => {
           return selectedRepoUrlTemplateFile;
         })
@@ -80,4 +82,4 @@ const repojs = {
   },
 };
 
-module.exports = repojs
+export default repojs;

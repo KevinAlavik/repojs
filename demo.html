@@ -14,7 +14,7 @@
     <script>
       repojs.init();
       repojs.repo
-        .fetch("https://puffer.is-a.dev/repos/main-scarlet.json")
+        .get("https://puffer.is-a.dev/repos/main-scarlet.json")
         .then((data) => {
           out = document.getElementById("out");
           out.innerText = "Loading...";
