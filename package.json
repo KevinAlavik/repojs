@@ -1,5 +1,5 @@
 {
-  "name": "repo-js",
+  "name": "irepo.js",
   "version": "0.0.1",
   "description": "A fancy way of handeling JSON data in JavaScript made for web based iOS 3rd party app stores",
   "main": "src/index.js",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/KevinAlavik/repojs/issues"
   },
-  "homepage": "https://puffer.is-a.dev/projects/repojs"
+  "homepage": "https://puffer.is-a.dev/projects/repojs",
+  "dependencies": {
+    "irepo.js": "^0.0.1"
+  }
 }
