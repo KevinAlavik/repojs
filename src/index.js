@@ -5,8 +5,15 @@
         - Kevin Alavik
 
 */
-
-import fetch from 'node-fetch';
+let fetchFn;
+if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
+  // Code is running in a web browser
+  fetchFn = window.fetch;
+} else {
+  // Code is running in Node.js
+  const nodeFetch = require('node-fetch');
+  fetchFn = nodeFetch.default;
+}
 
 const repojs = {
   init: function () {
@@ -15,7 +22,7 @@ const repojs = {
   repo: {
     get: async function (url) {
       try {
-        const response = await fetch(url);
+        const response = await fetchFn(url);
         const data = await response.json();
         return data;
       } catch (error) {
@@ -70,7 +77,7 @@ const repojs = {
       selectedRepoUrlTemplateFile,
       finalRepoTemplateFile
     ) {
-      return fetch("src/stable/templates/" + selectedRepoUrlTemplateFile)
+      return fetchFn("src/stable/templates/" + selectedRepoUrlTemplateFile)
         .then((selectedRepoUrlTemplateFile) => {
           return selectedRepoUrlTemplateFile;
         })

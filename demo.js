@@ -1,4 +1,4 @@
-import repojs from 'irepo.js'
+const repojs = require('irepo.js')
 
 repojs.init();
 repojs.repo.get("https://usescarlet.com/scarlet.json").then((data) => {

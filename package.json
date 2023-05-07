@@ -1,9 +1,8 @@
 {
   "name": "irepo.js",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A fancy way of handeling JSON data in JavaScript made for web based iOS 3rd party app stores",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +17,7 @@
   },
   "homepage": "https://puffer.is-a.dev/projects/repojs",
   "dependencies": {
-    "irepo.js": "^0.0.4",
+    "irepo.js": "^0.1.0",
     "node-fetch": "^3.3.1"
   }
 }
