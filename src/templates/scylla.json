@@ -1,0 +1,20 @@
+{
+    "Info": {
+        "repoName": "%{repo_name}",
+        "repoAuthor": "%{repo_author}",
+        "repoIcon": "%{repo_icon}",
+        "repoDescription": "%{repo_description}"
+    },
+    "%{category}": [
+        {
+            "name":"%{app_name}",
+            "developer":"%{app_developer}",
+            "version":"€{app_version", 
+            "ipa":"€{app_ipa}",
+            "icon":"%{app_icon}",
+            "iOS":"%{app_ios}",
+            "description":"%{app_description}",
+            "color":"%{app_color}"
+        }
+    ]
+}

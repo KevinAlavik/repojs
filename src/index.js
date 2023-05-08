@@ -5,19 +5,28 @@
         - Kevin Alavik
 
 */
+let fetchFn;
+if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
+  // Code is running in a web browser
+  fetchFn = window.fetch;
+} else {
+  // Code is running in Node.js
+  const nodeFetch = require('node-fetch');
+  fetchFn = nodeFetch.default;
+}
 
 const repojs = {
   init: function () {
     console.log("Successfully started the repojs process");
   },
   repo: {
-    fetch: async function (url) {
+    get: async function (url) {
       try {
-        const response = await fetch(url);
+        const response = await fetchFn(url);
         const data = await response.json();
         return data;
       } catch (error) {
-        console.error('Error fetching URL:', error);
+        console.error("Error fetching URL:", error);
         return null;
       }
     },
@@ -53,13 +62,31 @@ const repojs = {
       }
 
       console.log(finalData);
-      return finalData;
+      return JSON.stringify(finalData, null, 2);
     },
     document: {
       append: function (data, element) {
-        const formattedData = JSON.stringify(data, null, 2);
-        element.innerHTML = '<pre>' + formattedData + '</pre>';
-      }
-    }
-  }
+        element.innerHTML = data;
+      },
+      appendImage: function (element, imageUrl) {
+        element.src = imageUrl;
+      },
+    },
+    convert: function (
+      selectedRepoUrl,
+      selectedRepoUrlTemplateFile,
+      finalRepoTemplateFile
+    ) {
+      return fetchFn("src/stable/templates/" + selectedRepoUrlTemplateFile)
+        .then((selectedRepoUrlTemplateFile) => {
+          return selectedRepoUrlTemplateFile;
+        })
+        .catch((error) => {
+          console.error(error);
+          return null;
+        });
+    },
+  },
 };
+
+export default repojs;
