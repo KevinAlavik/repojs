@@ -20,7 +20,7 @@ if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
 
 const repojs = {
   init: function () {
-    console.log("Inited the repojs process...");
+    console.log("Initialized the repojs process...");
   },
   repo: {
     get: async function fetchData(url) {
@@ -44,6 +44,10 @@ const repojs = {
       }
     
       return result;
+    },
+    loadMulti: function (data) {
+      final = ["work", "in", "progress"]
+      return final
     },
     parse: function (jsonData, pathString) {
       let finalData;
