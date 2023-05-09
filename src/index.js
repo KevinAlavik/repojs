@@ -25,8 +25,7 @@ const repojs = {
   repo: {
     get: async function fetchData(url) {
       try {
-        const fetch = await fetchFn();
-        const response = await fetch(url);
+        const response = await fetchFn(url);
         const data = await response.json(); // Parse the response body as JSON
         return data;
       } catch (error) {
@@ -45,9 +44,13 @@ const repojs = {
     
       return result;
     },
-    loadMulti: function (data) {
-      final = ["work", "in", "progress"]
-      return final
+    loadMulti: async function (data) {
+      const final = [];
+      for (let i = 0; i < data.length; i++) {
+        const result = await repojs.repo.get(data[i]); // Wait for the get() function to fetch the data
+        final.push(result);
+      }
+      return final;
     },
     parse: function (jsonData, pathString) {
       let finalData;
@@ -107,4 +110,7 @@ const repojs = {
   },
 };
 
-module.exports = repojs;
+if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
+} else {
+  module.exports = repojs;
+}
