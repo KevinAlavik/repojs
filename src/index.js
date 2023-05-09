@@ -20,7 +20,7 @@ if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
 
 const repojs = {
   init: function () {
-    console.log("Successfully started the repojs process");
+    console.log("Inited the repojs process...");
   },
   repo: {
     get: async function fetchData(url) {
