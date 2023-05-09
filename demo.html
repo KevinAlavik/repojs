@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RepoJs Test</title>
-    <script src="https://cdn.jsdelivr.net/npm/repojs/src/index.js" crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RepoJs Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/repojs/src/index.js" crossorigin="anonymous"></script>
 </head>
 
-  <body>
-    <p>Convert testing</p>
-    <div id="out"></div>
-    <script>
-      repojs.init();
-      repojs.repo
-        .get("https://puffer.is-a.dev/repos/main-scarlet.json")
-        .then((data) => {
-          out = document.getElementById("out");
-          out.innerText = "Loading...";
-          dataReadyToBeConverted = repojs.repo.parse(data);
-          repojs.repo
-            .convert(dataReadyToBeConverted, "scarlet.json", "scylla.json")
-            .then((convertedRepoData) => {
-              repojs.repo.document.append(convertedRepoData, out);
-              console.log(convertedRepoData);
-            })
-            .catch((error) => {
-              repojs.repo.document.append(error, out);
-              console.error(error);
-            });
-        });
-    </script>
-  </body>
+<body>
+  <p>RepoJS Web Testing</p>
+  <div id="out">Loading</div>
+  <script>
+    out = document.getElementById('out')
+    repojs.init();
+    repojs.repo.get("https://puffer.is-a.dev/repos/main-scarlet.json").then((data) => {
+      data = repojs.repo.parse(data.META.repoName)
+      alert(data.META.repoName)
+    });
+
+  </script>
+</body>
+
 </html>

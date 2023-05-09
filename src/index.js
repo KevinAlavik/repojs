@@ -33,7 +33,18 @@ const repojs = {
         console.error("Error fetching URL:", error);
         return null;
       }
-    },    
+    }, 
+    getAllCategories: function (data, excludedCategory) {
+      const result = [];
+    
+      for (let key in data) {
+        if (key !== excludedCategory && Array.isArray(data[key])) {
+          result.push(...data[key]);
+        }
+      }
+    
+      return result;
+    },
     parse: function (jsonData, pathString) {
       let finalData;
       if (!pathString) {
