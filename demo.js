@@ -1,5 +1,5 @@
 const repojs = require('./src/index');
-const url = "https://ipa.cypwn.xyz/scarlet.json"
+const url = "https://usescarlet.com/scarlet.json"
 
 repojs.init();
 repojs.repo.get(url).then((data) => {
