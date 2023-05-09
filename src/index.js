@@ -11,8 +11,11 @@ if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
   fetchFn = window.fetch;
 } else {
   // Code is running in Node.js
-  const nodeFetch = require('node-fetch');
-  fetchFn = nodeFetch.default;
+  const nodeFetch = import('node-fetch');
+  fetchFn = async () => {
+    const fetchModule = await nodeFetch;
+    return fetchModule.default;
+  };
 }
 
 const repojs = {
@@ -20,21 +23,21 @@ const repojs = {
     console.log("Successfully started the repojs process");
   },
   repo: {
-    get: async function (url) {
+    get: async function fetchData(url) {
       try {
-        const response = await fetchFn(url);
-        const data = await response.json();
+        const fetch = await fetchFn();
+        const response = await fetch(url);
+        const data = await response.json(); // Parse the response body as JSON
         return data;
       } catch (error) {
         console.error("Error fetching URL:", error);
         return null;
       }
-    },
+    },    
     parse: function (jsonData, pathString) {
       let finalData;
       if (!pathString) {
         finalData = jsonData;
-        console.log(finalData);
         return finalData;
       }
 
@@ -89,4 +92,4 @@ const repojs = {
   },
 };
 
-export default repojs;
+module.exports = repojs;

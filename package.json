@@ -1,6 +1,6 @@
 {
   "name": "repojs",
-  "version": "0.1.1",
+  "version": "0.1.7",
   "description": "A fancy way of handeling JSON data in JavaScript made for web based iOS 3rd party app stores",
   "main": "src/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   },
   "homepage": "https://puffer.is-a.dev/projects/repojs",
   "dependencies": {
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "repojs": "^0.1.7"
   }
 }
