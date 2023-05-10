@@ -32,34 +32,37 @@ repojs.repo
 
       const meta = data.META || {};
       const all = repojs.repo.getAllCategories(data, "META");
-      console.log("--------------------------------------");
-      console.log(
-        `${BRIGHT}Repo Name: ${FG_CYAN}${meta.repoName || "N/A"}${RESET}`
-      );
-      console.log(
-        `${BRIGHT}Repo Icon (url): ${FG_CYAN}${meta.repoIcon || "N/A"}${RESET}`
-      );
-      console.log("--------------------------------------");
-      console.log(`${BRIGHT}App Amount: ${FG_YELLOW}${all.length}${RESET}`);
-      console.log("");
+      var output;
+      output += "--------------------------------------\n";
+      output += `${BRIGHT}Repo Name: ${FG_CYAN}${
+        meta.repoName || "N/A"
+      }${RESET}\n`;
+      output += `${BRIGHT}Repo Icon (url): ${FG_CYAN}${
+        meta.repoIcon || "N/A"
+      }${RESET}\n`;
+
+      output += "--------------------------------------";
+      output += `${BRIGHT}App Amount: ${FG_YELLOW}${all.length}${RESET}\n`;
+      output += "\n";
       for (let i = 0; i < all.length; i++) {
         const app = all[i] || {};
-        console.log(
-          `${BRIGHT} · App ${i}'s Name: ${FG_CYAN}${app.name || "N/A"}${RESET}`
-        );
-        console.log(`  - App Version: ${app.version || "N/A"}`);
-        console.log(`  - App Category: ${app.category || "N/A"}`);
-        console.log(`  - App Description: ${app.description || "N/A"}`);
-        console.log(`  - App Bundle Id: ${app.bundleID || "N/A"}`);
-        console.log(`  - App Icon (url): ${app.icon || "N/A"}`);
-        console.log(`  - App Ipa (url): ${app.down || "N/A"}`);
+        output += `${BRIGHT} · App ${i}'s Name: ${FG_CYAN}${
+          app.name || "N/A"
+        }${RESET}\n`;
+        output += `  - App Version: ${app.version || "N/A"}\n`;
+        output += `  - App Category: ${app.category || "N/A"}\n`;
+        output += `  - App Description: ${app.description || "N/A"}\n`;
+        output += `  - App Bundle Id: ${app.bundleID || "N/A"}\n`;
+        output += `  - App Icon (url: ${app.icon || "N/A"}\n`;
+        output += `  - App Ipa (url: ${app.down || "N/A"}\n`;
         appAmmount++; // Increment appAmmount for each app
       }
     }
-    console.log("");
-    console.log(`${FG_YELLOW} Successfully loaded ${appAmmount} apps`);
+    output += "\n";
+    output += `${FG_YELLOW} Successfully loaded ${appAmmount} apps`;
+    console.log(output)
     let timeTaken = Date.now() - start;
-    console.log(`${BRIGHT}${FG_CYAN} Took ${timeTaken}ms`);
+    console.log(`${BRIGHT}${FG_CYAN} Took ${timeTaken}ms ${RESET}`);
   })
   .catch((error) => {
     console.error(error); // Handle any errors that occurred during the promise execution
