@@ -13,6 +13,7 @@ const BRIGHT = "\x1b[1m";
 const FG_CYAN = "\x1b[36m";
 const FG_YELLOW = "\x1b[33m";
 
+let start = Date.now();
 repojs.repo
   .loadMulti(repos)
   .then((results) => {
@@ -57,6 +58,8 @@ repojs.repo
     }
     console.log("");
     console.log(`${FG_YELLOW} Successfully loaded ${appAmmount} apps`);
+    let timeTaken = Date.now() - start;
+    console.log(`${BRIGHT}${FG_CYAN} Took ${timeTaken}ms`);
   })
   .catch((error) => {
     console.error(error); // Handle any errors that occurred during the promise execution
