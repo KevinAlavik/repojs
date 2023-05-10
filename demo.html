@@ -11,37 +11,47 @@
   <body>
     <p>RepoJS Web Testing</p>
     <div id="out">Loading</div>
-    <script src="./src/index.js" crossorigin="anonymous"></script>
+    <script src="src/index.js" crossorigin="anonymous"></script>
     <script>
       out = document.getElementById("out");
       repojs.init();
-      url = "https://puffer.is-a.dev/repos/main-scarlet.json";
-      var output = "<pre>";
-      repojs.repo.get(url).then((data) => {
-        var data = repojs.repo.parse(data);
-        var all = repojs.repo.getAllCategories(data, "META");
-        output += "--------------------------------------<br>";
-        output += `<span style="font-weight: bold;">Repo Name: <span style="font-weight: normal;">${
-          data.META.repoName || "N/A"
-        }</span></span><br>`;
-        output += `<span style="font-weight: bold;">Repo Icon (url): <span style="font-weight: normal;">${
-          data.META.repoIcon || "N/A"
-        }</span></span><br>`;
-        output += "--------------------------------------<br>";
-        output += `<span style="font-weight: bold;">App Amount: <span style="color: green;">${all.length}</span></span><br><br>`;
-        for (let i = 0; i < all.length; i++) {
-          output += `<span style="font-weight: bold;"> · App ${i}'s Name: <span style="font-weight: normal;">${all[i].name}</span></span><br>`;
-          output += `  - App Version: ${all[i].version}<br>`;
-          output += `  - App Category: ${all[i].category}<br>`;
-          output += `  - App Description: ${all[i].description}<br>`;
-          output += `  - App Bundle Id: ${all[i].bundleID}<br>`;
-          output += `  - App Icon (url): ${all[i].icon}<br>`;
-          output += `  - App Ipa (url): ${all[i].down}<br>`;
-        }
+      repos = [
+        "https://usescarlet.com/scarlet.json",
+        "https://puffer.is-a.dev/repos/main-scarlet.json",
+        "https://ipa.cypwn.xyz/scarlet.json",
+        "https://azu0609.github.io/repo/scarlet_repo.json"
+      ];
 
-        output += "</pre>";
-        repojs.repo.document.append(output, out);
-      });
-    </script>
-  </body>
+      var output = "<pre>";
+      repojs.repo.loadMulti(repos)
+        .then((results) => {
+          for (let data of results) {
+            if (data === null) {
+              console.error("Error: Invalid JSON response");
+              continue; // Skip to the next iteration
+            }
+
+            const meta = data.META || {};
+            const all = repojs.repo.getAllCategories(data, "META");
+
+            output += "--------------------------------------<br>";
+            output += `<span style="font-weight: bold;">Repo Name: <span style="font-weight: normal;">${(meta.repoName || "N/A")}</span></span><br>`;
+            output += `<span style="font-weight: bold;">Repo Icon (url): <span style="font-weight: normal;">${(meta.repoIcon || "N/A")}</span></span><br>`;
+            output += "--------------------------------------<br>";
+            output += `<span style="font-weight: bold;">App Amount: <span style="color: green;">${all.length}</span></span><br><br>`;
+            for (let i = 0; i < all.length; i++) {
+              const app = all[i] || {};
+              output += `<span style="font-weight: bold;"> · App ${i}'s Name: <span style="font-weight: normal;">${(app.name || "N/A")}</span></span><br>`;
+              output += `  - App Version: ${app.version || "N/A"}<br>`;
+              output += `  - App Category: ${app.category || "N/A"}<br>`;
+              output += `  - App Description: ${app.description || "N/A"}<br>`;
+              output += `  - App Bundle Id: ${app.bundleID || "N/A"}<br>`;
+              output += `  - App Icon (url): ${app.icon || "N/A"}<br>`;
+              output += `  - App Ipa (url): ${app.down || "N/A"}<br>`;
+            }
+          }
+          repojs.repo.document.append(output, out)
+        });
+      </script>
+    </body>
 </html>
