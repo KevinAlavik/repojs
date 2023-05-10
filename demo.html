@@ -11,7 +11,7 @@
   <body>
     <p>RepoJS Web Testing</p>
     <div id="out">Loading</div>
-    <script src="./src/index.js" crossorigin="anonymous"></script>
+    <script src="src/index.js" crossorigin="anonymous"></script>
     <script>
       out = document.getElementById("out");
       repojs.init();
@@ -50,12 +50,8 @@
               output += `  - App Ipa (url): ${app.down || "N/A"}<br>`;
             }
           }
-          output += "</pre>";
-          repojs.repo.document.append(output, out);
-        })
-        .catch((error) => {
-          console.error(error); // Handle any errors that occurred during the promise execution
+          repojs.repo.document.append(output, out)
         });
-    </script>
-  </body>
+      </script>
+    </body>
 </html>

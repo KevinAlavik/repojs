@@ -16,6 +16,7 @@ const FG_YELLOW = "\x1b[33m";
 repojs.repo
   .loadMulti(repos)
   .then((results) => {
+    let appAmmount = 0; // Initialize appAmmount variable outside the loop
     for (let result of results) {
       if (result === null) {
         console.error("Error: Invalid JSON response");
@@ -30,7 +31,6 @@ repojs.repo
 
       const meta = data.META || {};
       const all = repojs.repo.getAllCategories(data, "META");
-
       console.log("--------------------------------------");
       console.log(
         `${BRIGHT}Repo Name: ${FG_CYAN}${meta.repoName || "N/A"}${RESET}`
@@ -52,8 +52,11 @@ repojs.repo
         console.log(`  - App Bundle Id: ${app.bundleID || "N/A"}`);
         console.log(`  - App Icon (url): ${app.icon || "N/A"}`);
         console.log(`  - App Ipa (url): ${app.down || "N/A"}`);
+        appAmmount++; // Increment appAmmount for each app
       }
     }
+    console.log("");
+    console.log(`${FG_YELLOW} Successfully loaded ${appAmmount} apps`);
   })
   .catch((error) => {
     console.error(error); // Handle any errors that occurred during the promise execution
