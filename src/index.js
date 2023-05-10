@@ -11,12 +11,10 @@ if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
   fetchFn = window.fetch;
 } else {
   // Code is running in Node.js
-  const nodeFetch = import('node-fetch');
-  fetchFn = async () => {
-    const fetchModule = await nodeFetch;
-    return fetchModule.default;
-  };
+  const fetch = require('isomorphic-fetch');
+  fetchFn = fetch;
 }
+
 
 const repojs = {
   init: function () {
@@ -32,16 +30,16 @@ const repojs = {
         console.error("Error fetching URL:", error);
         return null;
       }
-    }, 
+    },
     getAllCategories: function (data, excludedCategory) {
       const result = [];
-    
+
       for (let key in data) {
         if (key !== excludedCategory && Array.isArray(data[key])) {
           result.push(...data[key]);
         }
       }
-    
+
       return result;
     },
     loadMulti: async function (data) {
@@ -110,7 +108,8 @@ const repojs = {
   },
 };
 
-if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
+if (typeof window !== "undefined" && typeof window.fetch === "function") {
+  window.repojs = repojs;
 } else {
   module.exports = repojs;
 }
