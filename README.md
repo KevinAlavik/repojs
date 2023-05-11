@@ -1,6 +1,5 @@
 # RepoJs
-[![Node.js Package](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish.yml)
-
+[![Node.js Package](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish-github-packages.yml)
 ## Gettings Started
 **Using repojs with Node.js**
 To install it run
