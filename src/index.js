@@ -6,19 +6,18 @@
 
 */
 let fetchFn;
-if (typeof window !== 'undefined' && typeof window.fetch === 'function') {
+if (typeof window !== "undefined" && typeof window.fetch === "function") {
   // Code is running in a web browser
   fetchFn = window.fetch;
 } else {
   // Code is running in Node.js
-  const fetch = require('isomorphic-fetch');
+  const fetch = require("isomorphic-fetch");
   fetchFn = fetch;
 }
 
-
 const repojs = {
   init: function () {
-    console.log("Initialized the repojs process...");
+    console.log("%c Repojs was successfully started", "color: orange");
   },
   repo: {
     get: async function fetchData(url) {
