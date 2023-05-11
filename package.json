@@ -1,6 +1,6 @@
 {
   "name": "repojs",
-  "version": "0.2.2-beta",
+  "version": "0.2.2",
   "description": "A fancy way of handeling JSON data in JavaScript made for web based iOS 3rd party app stores",
   "main": "src/index.js",
   "scripts": {
