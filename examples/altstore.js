@@ -1,12 +1,9 @@
-const repojs = require("../src/index");
+const repojs = require('../src/index')
 
 var repos = [
-  "https://usescarlet.com/scarlet.json",
-  "https://puffer.is-a.dev/repos/main-scarlet.json",
-  "https://ipa.cypwn.xyz/scarlet.json",
-  "https://azu0609.github.io/repo/scarlet_repo.json",
-  
-];
+    "https://repo.starfiles.co/public",
+    "https://repo.starfiles.co/public?slim"
+]
 
 // Color codes
 const RESET = "\x1b[0m";
@@ -15,9 +12,7 @@ const FG_CYAN = "\x1b[36m";
 const FG_YELLOW = "\x1b[33m";
 
 let start = Date.now();
-repojs.repo
-  .loadMulti(repos)
-  .then((results) => {
+repojs.repo.loadMulti(repos).then((results) => {
     let appAmmount = 0; // Initialize appAmmount variable outside the loop
     for (let result of results) {
       if (result === null) {
@@ -32,7 +27,7 @@ repojs.repo
       }
 
       const meta = data.META || {};
-      const all = repojs.repo.getAllCategories(data, "META");
+      const all = data.apps
       var output;
       output += "--------------------------------------\n";
       output += `${BRIGHT}Repo Name: ${FG_CYAN}${
@@ -47,15 +42,29 @@ repojs.repo
       output += "\n";
       for (let i = 0; i < all.length; i++) {
         const app = all[i] || {};
-        output += `${BRIGHT} · App ${i}'s Name: ${FG_CYAN}${
+        output += `${BRIGHT} · Loaded App: ${FG_CYAN}${
           app.name || "N/A"
         }${RESET}\n`;
-        output += `  - App Version: ${app.version || "N/A"}\n`;
-        output += `  - App Category: ${app.category || "N/A"}\n`;
-        output += `  - App Description: ${app.description || "N/A"}\n`;
         output += `  - App Bundle Id: ${app.bundleID || "N/A"}\n`;
-        output += `  - App Icon (url: ${app.icon || "N/A"}\n`;
-        output += `  - App Ipa (url: ${app.down || "N/A"}\n`;
+        output += `  - App Developer: ${app.developerName || "N/A"}\n`;
+        if(app.versions !== undefined && app.versions.length !== nil) {
+            output += `  - App Versions: \n`
+            for(i = 0; i < app.versions.length; i++) {
+                output += `   · Version ${app.versions[i].version}\n`
+                output += `     - Date: ${app.versions[i].date}\n`
+                output += `     - Desciption: ${app.versions[i].localizedDescription}\n`
+                output += `     - IPA Url: ${app.versions[i].downloadURL}\n`
+                output += `     - Size: ${app.versions[i].size}\n`
+                output += "--------------------------------------\n";
+            }
+        } else {
+            output += `   - App Version: ${app.version}\n`
+            output += `   - App Version Date: ${app.versionDate}\n`
+            output += `   - App Short Description: ${app.subtitle}\n`
+            output += `   - App IPA (Url): ${app.downloadURL}\n`
+            output += `   - App Icon (Url): ${app.iconURL}\n`
+            output += `   - App Size: ${app.size}\n`
+        }
         appAmmount++; // Increment appAmmount for each app
       }
     }
@@ -64,7 +73,4 @@ repojs.repo
     console.log(output)
     let timeTaken = Date.now() - start;
     console.log(`${BRIGHT}${FG_CYAN} Took ${timeTaken}ms ${RESET}`);
-  })
-  .catch((error) => {
-    console.error(error); // Handle any errors that occurred during the promise execution
-  });
+});

@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Working ✅\"",
-    "demo": "node examples/load-multi",
     "web": "http-server"
   },
   "repository": {
