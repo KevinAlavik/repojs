@@ -46,7 +46,7 @@ repojs.repo
           const app = all[j] || {};
           appAmount++; // Increment appAmount for each app
           output += `${BRIGHT} · App ${appAmount}'s Name: ${FG_CYAN}${app.name || "N/A"}${RESET}\n`;
-          // output += `  - From: ${repoUrl}\n`;
+          output += `  - From: ${repoUrl}\n`;
         }
       }
     }

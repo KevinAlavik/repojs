@@ -1,5 +1,8 @@
 # RepoJs
 [![Node.js Package](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish-github-packages.yml)
+[Tutorial](https://puffer.is-a.dev/projects/repojs/)
+
+
 ## Gettings Started
 **Using repojs with Node.js**
 To install it run
@@ -20,14 +23,15 @@ Use our cdn by adding this into your websites body
 | repojs.repo.parse() | jsonData, pathString | A+ | repojs.repo.parse(data, "META");<br>repojs.repo.parse(data, "Tweaked[1]"); |
 | repojs.init() |  | A | repojs.init(); |
 | repojs.repo.getAllCategories() | data, excludedCategory | B | repojs.repo.getAllCategories(data, "META"); |
-| repojs.repo.loadMulti() | repos[] | A- | repojs.repo.loadMulti(repos); |
-| repojs.repo.document.append(); | data, element | A+ | repojs.repo.document.append(data, document.getElementById('out')); |
-| repojs.repo.document.appendImage(); | element, imageUrl | F- | repojs.repo.document.appendImage(document.getElementById('out'), "https://example.com/example.png"); |
+| repojs.repo.loadMulti() | repos[] | A++ | repojs.repo.loadMulti(repos); |
+| repojs.document.append(); | data, element | A+ | repojs.repo.document.append(data, document.getElementById('out')); |
+| repojs.document.appendImage(); | element, imageUrl | F- | repojs.repo.document.appendImage(document.getElementById('out'), "https://example.com/example.png"); |
 | repojs.repo.convert() | selectedRepoUrl, selectedRepoUrlTemplateFile, finalRepoTemplateFile | E- | repojs.repo.document.convert("https://example.com/example.json", "scarlet", "scylla"); |
 
 ### Scores Explained
 | Score | Explained |
 |---|---|
+| A++ | Work So Fucking Good |
 | A+ | Work Great |
 | A | Works Good |
 | A- | Works Okay | 

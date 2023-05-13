@@ -9,49 +9,43 @@
   </head>
 
   <body>
-    <p>RepoJS Web Testing</p>
-    <div id="out">Loading</div>
+    <p>RepoJS Example</p>
+    <div id="out">Loading..</div>
     <script src="src/index.js" crossorigin="anonymous"></script>
     <script>
       out = document.getElementById("out");
       repojs.init();
-      repos = [
-        "https://usescarlet.com/scarlet.json",
-        "https://puffer.is-a.dev/repos/main-scarlet.json",
-        "https://ipa.cypwn.xyz/scarlet.json",
-        "https://azu0609.github.io/repo/scarlet_repo.json"
-      ];
+      const repoUrl = "https://usescarlet.com/scarlet.json";
 
-      var output = "<pre>";
-      repojs.repo.loadMulti(repos)
-        .then((results) => {
-          for (let data of results) {
-            if (data === null) {
-              console.error("Error: Invalid JSON response");
-              continue; // Skip to the next iteration
-            }
-
-            const meta = data.META || {};
-            const all = repojs.repo.getAllCategories(data, "META");
-
-            output += "--------------------------------------<br>";
-            output += `<span style="font-weight: bold;">Repo Name: <span style="font-weight: normal;">${(meta.repoName || "N/A")}</span></span><br>`;
-            output += `<span style="font-weight: bold;">Repo Icon (url): <span style="font-weight: normal;">${(meta.repoIcon || "N/A")}</span></span><br>`;
-            output += "--------------------------------------<br>";
-            output += `<span style="font-weight: bold;">App Amount: <span style="color: green;">${all.length}</span></span><br><br>`;
-            for (let i = 0; i < all.length; i++) {
-              const app = all[i] || {};
-              output += `<span style="font-weight: bold;"> · App ${i}'s Name: <span style="font-weight: normal;">${(app.name || "N/A")}</span></span><br>`;
-              output += `  - App Version: ${app.version || "N/A"}<br>`;
-              output += `  - App Category: ${app.category || "N/A"}<br>`;
-              output += `  - App Description: ${app.description || "N/A"}<br>`;
-              output += `  - App Bundle Id: ${app.bundleID || "N/A"}<br>`;
-              output += `  - App Icon (url): ${app.icon || "N/A"}<br>`;
-              output += `  - App Ipa (url): ${app.down || "N/A"}<br>`;
-            }
+      repojs.repo.get(repoUrl)
+        .then((data) => {
+          if (data === null) {
+            console.error("Error: Invalid JSON response");
+            return;
           }
-          repojs.repo.document.append(output, out)
+
+          const meta = data.META || {};
+          const all = repojs.repo.getAllCategories(data, "META");
+
+          let output = "<pre>";
+          output += "--------------------------------------<br>";
+          output += `<span style="font-weight: bold;">Repo Name: <span style="font-weight: normal;">${(meta.repoName || "N/A")}</span></span><br>`;
+          output += `<span style="font-weight: bold;">Repo Icon (url): <span style="font-weight: normal;">${(meta.repoIcon || "N/A")}</span></span><br>`;
+          output += "--------------------------------------<br>";
+          output += `<span style="font-weight: bold;">App Amount: <span style="color: green;">${all.length}</span></span><br><br>`;
+          for (let i = 0; i < all.length; i++) {
+            const app = all[i] || {};
+            output += `<span style="font-weight: bold;"> · App ${i}'s Name: <span style="font-weight: normal;">${(app.name || "N/A")}</span></span><br>`;
+            output += `  - App Version: ${app.version || "N/A"}<br>`;
+            output += `  - App Category: ${app.category || "N/A"}<br>`;
+            output += `  - App Description: ${app.description || "N/A"}<br>`;
+            output += `  - App Bundle Id: ${app.bundleID || "N/A"}<br>`;
+            output += `  - App Icon (url): ${app.icon || "N/A"}<br>`;
+            output += `  - App Ipa (url): ${app.down || "N/A"}<br>`;
+          }
+          output += "</pre>";
+          repojs.document.append(output, out)
         });
-      </script>
-    </body>
+    </script>
+  </body>
 </html>

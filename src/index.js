@@ -82,14 +82,6 @@ const repojs = {
       console.log(finalData);
       return JSON.stringify(finalData, null, 2);
     },
-    document: {
-      append: function (data, element) {
-        element.innerHTML = data;
-      },
-      appendImage: function (element, imageUrl) {
-        element.src = imageUrl;
-      },
-    },
     convert: function (
       selectedRepoUrl,
       selectedRepoUrlTemplateFile,
@@ -103,6 +95,14 @@ const repojs = {
           console.error(error);
           return null;
         });
+    },
+  },
+  document: {
+    append: function (data, element) {
+      element.innerHTML = data;
+    },
+    appendImage: function (element, imageUrl) {
+      element.src = imageUrl;
     },
   },
 };
