@@ -1,6 +1,7 @@
 # RepoJs
 [![Node.js Package](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/KevinAlavik/repojs/actions/workflows/npm-publish-github-packages.yml)
-[Tutorial](https://puffer.is-a.dev/projects/repojs/)
+
+[Tutorial Website](https://puffer.is-a.dev/projects/repojs/)
 
 
 ## Gettings Started
