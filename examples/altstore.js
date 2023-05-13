@@ -2,7 +2,8 @@ const repojs = require('../src/index')
 
 var repos = [
     "https://repo.starfiles.co/public",
-    "https://repo.starfiles.co/public?slim"
+    "https://repo.starfiles.co/public?slim",
+    "https://repo.starfiles.co/b/public"
 ]
 
 // Color codes

@@ -5,7 +5,6 @@ var repos = [
   "https://puffer.is-a.dev/repos/main-scarlet.json",
   "https://ipa.cypwn.xyz/scarlet.json",
   "https://azu0609.github.io/repo/scarlet_repo.json",
-  
 ];
 
 // Color codes
